@@ -113,12 +113,23 @@ Then open your browser to `http://localhost:8501`
 
 ### 3. Use Your Own Data
 
-Place your CSV file in `data/raw/smart-bins-argyle-square.csv` with the following columns:
-
-```csv
-bin_id,timestamp,latitude,longitude,fill_percentage,capacity_liters,temperature,bin_type
-BIN_001,2024-01-01 08:00:00,51.5294,-0.1194,45.2,240,18.5,General
+**Step 1: Validate your data**
+```bash
+python validate_data.py path/to/your/data.csv
 ```
+
+**Step 2: Run with your data**
+```bash
+python main.py --data path/to/your/data.csv
+```
+
+**Required CSV columns:**
+```csv
+bin_id,timestamp,latitude,longitude,fill_percentage
+BIN_001,2024-01-01 08:00:00,51.5294,-0.1194,45.2
+```
+
+**📖 See [CUSTOM_DATA_GUIDE.md](CUSTOM_DATA_GUIDE.md) for detailed instructions**
 
 ## 📁 Project Structure
 
