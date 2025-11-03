@@ -1,0 +1,56 @@
+# Configuration file for Waste Collection Route Optimization
+
+# Data paths
+data:
+  raw_data_path: "data/raw/smart-bins-argyle-square.csv"
+  processed_data_path: "data/processed/cleaned_bin_data.csv"
+
+# Model parameters
+model:
+  random_forest:
+    n_estimators: 100
+    max_depth: 20
+    min_samples_split: 5
+    random_state: 42
+
+  lstm:
+    sequence_length: 24
+    lstm_units: 64
+    dropout_rate: 0.2
+    learning_rate: 0.001
+    epochs: 50
+    batch_size: 32
+
+# Feature engineering
+features:
+  lag_periods: [1, 2, 3, 6, 12, 24]
+  rolling_windows: [3, 6, 12, 24]
+  test_size: 0.2
+
+# Route optimization
+routing:
+  depot_location:
+    latitude: 51.5294
+    longitude: -0.1194
+
+  num_vehicles: 3
+  vehicle_capacity: 10  # bins per vehicle
+  time_limit_seconds: 30
+  collection_threshold: 80.0  # percentage
+
+# Visualization
+visualization:
+  map_center:
+    latitude: 51.5294
+    longitude: -0.1194
+  zoom_start: 14
+
+  output_paths:
+    maps: "output/maps/"
+    plots: "output/plots/"
+
+# Dashboard
+dashboard:
+  port: 8501
+  host: "localhost"
+  theme: "light"
